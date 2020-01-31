@@ -1,1 +1,10 @@
-<app-content-card *ngFor="let comic of comicBookList; last as isLast" [comic]="comic" [class.is-last]="isLast"></app-content-card>
+<input [(ngModel)]="comicName">
+<button (click)="findComic(comicName)">FIND A HERO</button><br>
+{{comicFilter}}
+
+<h2>TECH</h2>
+<app-content-card *ngFor="let comic of (comicBookList | filter); last as isLast" [comic]="comic" [class.is-last]="isLast"></app-content-card>
+<h2>DETECTIVE</h2>
+<app-content-card *ngFor="let comic of (comicBookList | filter: 'Detective'); last as isLast" [comic]="comic" [class.is-last]="isLast"></app-content-card>
+<h2>HORROR</h2>
+<app-content-card *ngFor="let comic of (comicBookList | filter: 'Horror'); last as isLast" [comic]="comic" [class.is-last]="isLast"></app-content-card>
