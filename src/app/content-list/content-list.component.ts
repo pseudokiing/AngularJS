@@ -71,6 +71,6 @@ export class ContentListComponent implements OnInit {
   ngOnInit() {
   }
   findComic (name: string): void {
-    this.comicFilter = this.comicBookList.filter(c => c.alias === name).length != 0 ? `Here's your hero` : `Your hero has died` ;
+    this.comicFilter = this.comicBookList.filter(c => c.alias === name).length != 0 ? name + ` lives here :)` : name + ` is dead :(`
   }
 }
