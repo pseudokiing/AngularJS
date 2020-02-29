@@ -1,0 +1,12 @@
+<div>Alias: <input [(ngModel)]="alias">{{ alias }}</div>
+
+<div>Name: <input [(ngModel)]="addComicBinding">{{ name }}</div>
+
+<div>Description: <input [(ngModel)]="addComicBinding">{{ body }}</div>
+
+<div>Genre: <input [(ngModel)]="addComicBinding">{{ genre }}</div>
+
+<div>Cover Art <input [(ngModel)]="addComicBinding">{{ imgUrl }}<!-- http://insidepulse.com/wp-content/uploads/2016/09/Flash-6-Wally-West-Kid-Flash-DC-Comics-Rebirth-1.jpg  --></div>
+
+<button (click)="addComic(addComicBinding)">Add Comic</button><br/>
+<span [innerHtml]=""> </span>

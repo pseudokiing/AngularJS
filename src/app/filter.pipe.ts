@@ -6,7 +6,7 @@ import { Content } from './content-card/content-helper';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(comicBookList: Content[], filterGenre: string = "Tech"): Content[] {
-     return comicBookList.filter(comic => comic.genre == filterGenre);
+  transform(comicBookList: Content[], filterGenre: string = `Tech`): Content[] {
+     return comicBookList.filter(comic => comic.genre === filterGenre);
   }
 }

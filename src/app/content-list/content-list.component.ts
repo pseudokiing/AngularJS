@@ -70,7 +70,14 @@ export class ContentListComponent implements OnInit {
 
   ngOnInit() {
   }
+
   findComic (name: string): void {
     this.comicFilter = this.comicBookList.filter(c => c.alias === name).length != 0 ? name + ` lives here :)` : name + ` is dead :(`
+  }
+  addComicToList(newComic: Content) {
+    this.comicBookList.push(newComic);
+    const myClonedArray = Object.assign([], this.comicBookList) // reassign array value from location in memory Array cloning
+    console.log(this.comicBookList);
+    this.comicBookList = myClonedArray;
   }
 }
