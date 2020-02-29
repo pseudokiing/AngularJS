@@ -9,7 +9,7 @@ import { SelectControlValueAccessor } from '@angular/forms';
 })
 export class AddComicComponent implements OnInit 
 {
-  @Input() startingId;
+  @Input() startingId: number;
   @Output() newComicEvent = new EventEmitter<Content> ();
     newComicItem: Content;
     currentId: number;
@@ -19,6 +19,7 @@ export class AddComicComponent implements OnInit
     bodyBinding: any;
     genreBinding: any;
     imgBinding: any;
+    errBinding: string;
   constructor() { }
 
   ngOnInit() {
@@ -51,21 +52,21 @@ export class AddComicComponent implements OnInit
       this.bodyBinding= ``;
       this.genreBinding= ``;
       this.imgBinding= ``;
-      if (this.newComicItem.body != "")
+      if (this.newComicItem.body != "" || null || undefined)
       {
         success(`The ${title} comic was added succesfully `);
       }
       else
       {
-      throw "omg something went wrong";
+      throw `Error: Comic not added. Please enter a description for The ${title} comic`;
       }
     }
     catch(err)
     {
+      this.errBinding = err;
       fail(err);
     }
   });
-
     addNewComic.then(r => 
       {
         console.log(addNewComic);
