@@ -14,10 +14,11 @@ export class AddComicComponent implements OnInit
     newComicItem: Content;
     currentId: number;
     err = "User must try to create the content again wuth a description";
-    addComicBinding: any;
-
-
-
+    aliasBinding: any;
+    nameBinding: string;
+    bodyBinding: any;
+    genreBinding: any;
+    imgBinding: any;
   constructor() { }
 
   ngOnInit() {
@@ -45,7 +46,11 @@ export class AddComicComponent implements OnInit
       let title = this.newComicItem.alias;
       this.currentId++;
       this.newComicEvent.emit(this.newComicItem);
-      this.addComicBinding = ` `;
+      this.aliasBinding= ``;
+      this.nameBinding= ``;
+      this.bodyBinding= ``;
+      this.genreBinding= ``;
+      this.imgBinding= ``;
       if (this.newComicItem.body != "")
       {
         success(`The ${title} comic was added succesfully `);
@@ -68,9 +73,5 @@ export class AddComicComponent implements OnInit
         
         console.log(r)
       })
-    return 
-    
   }
-
 }
-
