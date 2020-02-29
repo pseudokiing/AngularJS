@@ -15,7 +15,7 @@ export class ContentCardComponent implements OnInit {
   }
 
   displayId(): void {
-    console.log("Current ID is: ", this.comic.id);
+    console.log(`Current ID is: `, this.comic.id);
   }
 
 }

@@ -6,4 +6,4 @@ export interface Content {
     alias: string;
     body: string;
     tags?: string[];
-  }
+}
