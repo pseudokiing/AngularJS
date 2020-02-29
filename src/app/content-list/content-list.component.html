@@ -4,7 +4,7 @@
 
 <div>
     <app-add-comic (newComicEvent)="addComicToList($event)"></app-add-comic>
-  </div>
+</div>
 
 <div *ngFor="let comic of (comicBookList | filter); index as container" >
   <h2>TECH</h2>
