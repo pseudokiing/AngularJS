@@ -13,17 +13,18 @@ export class AddComicComponent implements OnInit
   @Output() newComicEvent = new EventEmitter<Content> ();
     newComicItem: Content;
     currentId: number;
-    err = "User must try to create the content again wuth a description";
+    err = ``;
+    success = ``;
     aliasBinding: any;
     nameBinding: string;
     bodyBinding: any;
     genreBinding: any;
     imgBinding: any;
-    errBinding: string;
   constructor() { }
 
   ngOnInit() {
     this.currentId = this.startingId;
+    console.log(this.currentId);
   }
 
   
@@ -34,45 +35,46 @@ export class AddComicComponent implements OnInit
     {
       try
       {
-      this.newComicItem = 
+        this.newComicItem = 
       {
-        id: 5,
+        id: this.currentId,
         alias,
         name,
         body,
         genre,
-        imgUrl,
-        tags: [] 
+        imgUrl 
       }
       let title = this.newComicItem.alias;
-      this.currentId++;
-      this.newComicEvent.emit(this.newComicItem);
-      this.aliasBinding= ``;
-      this.nameBinding= ``;
-      this.bodyBinding= ``;
-      this.genreBinding= ``;
-      this.imgBinding= ``;
-      if (this.newComicItem.body != "" || null || undefined)
+      if (this.newComicItem.body)
       {
+        this.currentId++;
+        this.newComicEvent.emit(this.newComicItem);
+        this.aliasBinding= ``;
+        this.nameBinding= ``;
+        this.bodyBinding= ``;
+        this.genreBinding= ``;
+        this.imgBinding= ``;
+      
         success(`The ${title} comic was added succesfully `);
       }
       else
       {
-      throw `Error: Comic not added. Please enter a description for The ${title} comic`;
+      throw `Error: Comic not added, please enter a description for the ${title} comic`;
       }
     }
     catch(err)
     {
-      this.errBinding = err;
-      fail(err);
+     fail(err)
     }
   });
     addNewComic.then(r => 
       {
-        console.log(addNewComic);
-      }).catch(r => {
-        
-        console.log(r)
+        let title = this.newComicItem.alias;
+        this.err = ``;
+        this.success = `The ${title} comic was added succesfully `;
+      }).catch(r => { 
+        this.success = ``;
+        this.err = r;
       })
   }
 }

@@ -3,7 +3,7 @@
 {{comicFilter}}
 
 <div>
-    <app-add-comic (newComicEvent)="addComicToList($event)"></app-add-comic>
+    <app-add-comic [startingId]="comicBookList.length" (newComicEvent)="addComicToList($event)"></app-add-comic>
 </div>
 
 <div *ngFor="let comic of (comicBookList | filter); index as container" >
